@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './App.css'; // Importa el archivo CSS
 
 function App() {
   const [titulo, setTitulo] = useState('');
@@ -91,79 +92,65 @@ function App() {
   }, []);
 
   return (
-    <div className="container my-5">
-      <h1 className="text-center mb-4">Aplicación de Proyectos</h1>
+    <div className="container">
+      <h1>Aplicación de Proyectos</h1>
       
       <div className="card mb-4">
         <div className="card-header">
-          <h2>{isEditing ? "Editar proyecto" : "Agregar nuevo proyecto"}</h2>
+          {isEditing ? "Editar proyecto" : "Agregar nuevo proyecto"}
         </div>
         <div className="card-body">
-          <form onSubmit={handleSubmit} className="row g-3">
-            <div className="col-md-6">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Título"
-                value={titulo}
-                onChange={(e) => setTitulo(e.target.value)}
-                required
-              />
-            </div>
-            <div className="col-md-6">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Descripción"
-                value={descripcion}
-                onChange={(e) => setDescripcion(e.target.value)}
-              />
-            </div>
-            <div className="col-md-4">
-              <input
-                type="date"
-                className="form-control"
-                placeholder="Fecha de vencimiento"
-                value={fechaVencimiento}
-                onChange={(e) => setFechaVencimiento(e.target.value)}
-              />
-            </div>
-            <div className="col-md-4">
-              <select className="form-select" value={prioridad} onChange={(e) => setPrioridad(e.target.value)}>
-                <option value="baja">Baja</option>
-                <option value="media">Media</option>
-                <option value="alta">Alta</option>
-              </select>
-            </div>
-            <div className="col-md-4">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Asignado a"
-                value={asignadoA}
-                onChange={(e) => setAsignadoA(e.target.value)}
-              />
-            </div>
-            <div className="col-md-6">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Categoría"
-                value={categoria}
-                onChange={(e) => setCategoria(e.target.value)}
-              />
-            </div>
-            <div className="col-md-6">
-              <input
-                type="number"
-                className="form-control"
-                placeholder="Costo del proyecto"
-                value={costoProyecto}
-                onChange={(e) => setCostoProyecto(e.target.value)}
-                required
-              />
-            </div>
-            <div className="col-12">
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Título"
+              value={titulo}
+              onChange={(e) => setTitulo(e.target.value)}
+              required
+            />
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Descripción"
+              value={descripcion}
+              onChange={(e) => setDescripcion(e.target.value)}
+            />
+            <input
+              type="date"
+              className="form-control"
+              placeholder="Fecha de vencimiento"
+              value={fechaVencimiento}
+              onChange={(e) => setFechaVencimiento(e.target.value)}
+            />
+            <select className="form-select" value={prioridad} onChange={(e) => setPrioridad(e.target.value)}>
+              <option value="baja">Baja</option>
+              <option value="media">Media</option>
+              <option value="alta">Alta</option>
+            </select>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Asignado a"
+              value={asignadoA}
+              onChange={(e) => setAsignadoA(e.target.value)}
+            />
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Categoría"
+              value={categoria}
+              onChange={(e) => setCategoria(e.target.value)}
+            />
+            <input
+              type="number"
+              className="form-control"
+              placeholder="Costo del proyecto"
+              value={costoProyecto}
+              onChange={(e) => setCostoProyecto(e.target.value)}
+              required
+            />
+            <div className="d-flex justify-content-between">
               <button type="submit" className="btn btn-primary me-2">
                 {isEditing ? "Actualizar" : "Crear"}
               </button>
@@ -196,6 +183,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
